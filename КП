@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedAI Pro - Будущее медицинского маркетинга начинается сегодня</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --neon-blue: #00D4FF;
+            --neon-purple: #BD00FF;
+            --dark-bg: #0a0a0f;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --text-light: #ffffff;
+            --accent-gradient: linear-gradient(135deg, #00D4FF, #BD00FF, #00D4FF);
+            --current-year: #4ECDC4;
+            --near-future: #00D4FF;
+            --far-future: #BD00FF;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-light);
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        /* Кастомный курсор */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--neon-blue);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            transition: all 0.1s ease;
+            z-index: 9999;
+            box-shadow: 0 0 20px var(--neon-blue);
+        }
+
+        .cursor-follower {
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            z-index: 9998;
+        }
+
+        /* Анимированный фон с частицами */
+        #particles-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* Секции */
+        .section {
+            min-height: 100vh;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Первый экран - понятный оффер */
+        .hero-2024 {
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+            color: var(--current-year);
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            opacity: 0.7;
+            margin-bottom: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .current-offer {
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.1), rgba(0, 212, 255, 0.1));
+            border: 1px solid rgba(78, 205, 196, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px auto;
+            max-width: 900px;
+        }
+
+        .offer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .offer-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .offer-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--current-year);
+            display: block;
+        }
+
+        .offer-text {
+            margin-top: 10px;
+            font-size: 1.1rem;
+        }
+
+        /* Временная шкала развития */
+        .timeline-container {
+            position: relative;
+            padding: 100px 0;
+        }
+
+        .timeline-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .timeline-header h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .singularity-note {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            font-style: italic;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--current-year), var(--near-future), var(--far-future));
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 60px 0;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-content {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            width: calc(50% - 40px);
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-right: auto;
+        }
+
+        .timeline-year {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            font-weight: bold;
+            width: 80px;
+            height: 80px;
+            background: var(--dark-bg);
+            border: 3px solid;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-year {
+            left: calc(50% - 40px);
+        }
+
+        .timeline-item:nth-child(even) .timeline-year {
+            right: calc(50% - 40px);
+        }
+
+        /* Цветовая градация по годам */
+        .timeline-item:nth-child(1) .timeline-year { border-color: var(--current-year); color: var(--current-year); }
+        .timeline-item:nth-child(2) .timeline-year { border-color: #00E5CC; color: #00E5CC; }
+        .timeline-item:nth-child(3) .timeline-year { border-color: var(--near-future); color: var(--near-future); }
+        .timeline-item:nth-child(4) .timeline-year { border-color: #4D9FFF; color: #4D9FFF; }
+        .timeline-item:nth-child(5) .timeline-year { border-color: #8B7DFF; color: #8B7DFF; }
+        .timeline-item:nth-child(6) .timeline-year { border-color: var(--far-future); color: var(--far-future); }
+
+        .timeline-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: inherit;
+        }
+
+        .timeline-description {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        .timeline-metrics {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .metric-small {
+            text-align: center;
+            margin: 10px;
+        }
+
+        .metric-small-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--neon-blue);
+        }
+
+        .metric-small-label {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-top: 5px;
+        }
+
+        /* Стеклянные карточки */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3);
+        }
+
+        /* CTA кнопка */
+        .cta-button {
+            display: inline-block;
+            padding: 20px 50px;
+            margin-top: 30px;
+            background: linear-gradient(135deg, var(--current-year), var(--near-future));
+            border: none;
+            color: var(--text-light);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+            border-radius: 50px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(78, 205, 196, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.6);
+        }
+
+        /* Сравнение секция */
+        .comparison-section {
+            padding: 100px 20px;
+            background: linear-gradient(180deg, transparent, rgba(0, 212, 255, 0.05), transparent);
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .comparison-card {
+            padding: 30px;
+            text-align: center;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        .comparison-card.old {
+            background: rgba(255, 68, 68, 0.1);
+            border: 1px solid rgba(255, 68, 68, 0.3);
+        }
+
+        .comparison-card.new {
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.1), rgba(0, 212, 255, 0.1));
+            border: 1px solid rgba(78, 205, 196, 0.3);
+        }
+
+        /* Технологическая сингулярность график */
+        .singularity-graph {
+            width: 100%;
+            max-width: 800px;
+            margin: 50px auto;
+            position: relative;
+            height: 400px;
+        }
+
+        .graph-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .exponential-curve {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .curve-path {
+            stroke: var(--accent-gradient);
+            stroke-width: 3;
+            fill: none;
+            filter: drop-shadow(0 0 10px var(--neon-blue));
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2rem; }
+            .hero-subtitle { font-size: 1.3rem; }
+            .timeline::before { left: 30px; }
+            .timeline-content { width: calc(100% - 80px); margin-left: 80px !important; }
+            .timeline-year { left: -10px !important; right: auto !important; }
+            .offer-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Анимация появления при скролле */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Кастомный курсор -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Частицы фона -->
+    <canvas id="particles-bg"></canvas>
+
+    <!-- Секция 1: Понятный оффер для врача 2024 -->
+    <section class="section">
+        <div class="container">
+            <div class="hero-2024">
+                <h1 class="hero-title">100+ видео в месяц для вашей практики</h1>
+                <p class="hero-subtitle">Без съемочной команды, монтажера и SMM-агентства</p>
+                <p class="hero-description">
+                    MedAI Pro — первая в России AI-система, которая создает персонализированный 
+                    видеоконтент для врачей. Снимаетесь один раз, получаете контент навсегда.
+                </p>
+
+                <div class="current-offer">
+                    <h3 style="font-size: 1.8rem; margin-bottom: 30px;">Что вы получаете уже сегодня:</h3>
+                    <div class="offer-grid">
+                        <div class="offer-item">
+                            <span class="offer-number">2 часа</span>
+                            <span class="offer-text">Одна съемка в студии</span>
+                        </div>
+                        <div class="offer-item">
+                            <span class="offer-number">100+</span>
+                            <span class="offer-text">Видео каждый месяц</span>
+                        </div>
+                        <div class="offer-item">
+                            <span class="offer-number">24/7</span>
+                            <span class="offer-text">Автоматическая публикация</span>
+                        </div>
+                        <div class="offer-item">
+                            <span class="offer-number">-70%</span>
+                            <span class="offer-text">Снижение стоимости пациента</span>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#future-timeline" class="cta-button">Посмотреть, как это изменит медицину</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция 2: Проблемы сегодняшнего дня -->
+    <section class="section comparison-section">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 50px;">
+                Маркетинг врача: вчера vs завтра
+            </h2>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card old fade-in">
+                    <h3 style="color: #ff4444; margin-bottom: 20px;">😔 Сейчас (2024)</h3>
+                    <ul style="list-style: none; text-align: left; line-height: 2;">
+                        <li>📱 2-3 поста в неделю</li>
+                        <li>💸 SMM-менеджер: 80-150к/мес</li>
+                        <li>⏱️ 20 часов в неделю на контент</li>
+                        <li>🎯 CPL: 50-150 тыс ₽</li>
+                        <li>😴 Выгорание от рутины</li>
+                    </ul>
+                </div>
+                <div class="comparison-card new fade-in">
+                    <h3 style="color: var(--current-year); margin-bottom: 20px;">🚀 С MedAI Pro</h3>
+                    <ul style="list-style: none; text-align: left; line-height: 2;">
+                        <li>🎬 100+ видео в месяц</li>
+                        <li>💡 AI работает за 70к/мес</li>
+                        <li>⚡ 0 часов вашего времени</li>
+                        <li>🎯 CPL: 15-30 тыс ₽</li>
+                        <li>😊 Фокус на пациентах</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция 3: Временная линия развития медицины и AI -->
+    <section class="section" id="future-timeline">
+        <div class="container timeline-container">
+            <div class="timeline-header">
+                <h2>Эволюция медицинского маркетинга</h2>
+                <p class="singularity-note">
+                    Основано на концепции технологической сингулярности:<br>
+                    каждые 5 лет мощность AI удваивается, меняя медицину навсегда
+                </p>
+            </div>
+
+            <!-- График экспоненциального роста -->
+            <div class="singularity-graph">
+                <svg class="exponential-curve" viewBox="0 0 800 400">
+                    <path class="curve-path" d="M 0,380 Q 200,370 400,300 T 800,50" />
+                    <text x="10" y="390" fill="white" opacity="0.5" font-size="12">2020</text>
+                    <text x="790" y="390" fill="white" opacity="0.5" font-size="12" text-anchor="end">2050</text>
+                    <text x="400" y="30" fill="white" opacity="0.8" font-size="16" text-anchor="middle">Ускорение развития AI</text>
+                </svg>
+            </div>
+
+            <div class="timeline">
+                <!-- 2025 -->
+                <div class="timeline-item">
+                    <div class="timeline-year">2025</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Персональные AI-аватары врачей</h3>
+                        <p class="timeline-description">
+                            Первое поколение цифровых двойников. Каждый врач получает своего AI-помощника, 
+                            который генерирует контент, отвечает на базовые вопросы пациентов и ведет соцсети.
+                        </p>
+                        <div class="timeline-metrics">
+                            <div class="metric-small">
+                                <div class="metric-small-value">100+</div>
+                                <div class="metric-small-label">видео/месяц</div>
+                            </div>
+                            <div class="metric-small">
+                                <div class="metric-small-value">5x</div>
+                                <div class="metric-small-label">рост аудитории</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2030 -->
+                <div class="timeline-item">
+                    <div class="timeline-year">2030</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">AI-терапевты первого уровня</h3>
+                        <p class="timeline-description">
+                            AI проводит первичные консультации, анализирует симптомы с точностью 95%, 
+                            направляет к специалистам. Врачи фокусируются на сложных случаях.
+                        </p>
+                        <div class="timeline-metrics">
+                            <div class="metric-small">
+                                <div class="metric-small-value">60%</div>
+                                <div class="metric-small-label">консультаций через AI</div>
+                            </div>
+                            <div class="metric-small">
+                                <div class="metric-small-value">24/7</div>
+                                <div class="metric-small-label">доступность</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2035 -->
+                <div class="timeline-item">
+                    <div class="timeline-year">2035</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Нейроинтерфейсы в медицине</h3>
+                        <p class="timeline-description">
+                            Прямая передача медицинской информации в мозг пациента. 
+                            Обучение новым привычкам здоровья происходит во сне. 
+                            Контент адаптируется под нейроактивность.
+                        </p>
+                        <div class="timeline-metrics">
+                            <div class="metric-small">
+                                <div class="metric-small-value">100%</div>
+                                <div class="metric-small-label">персонализация</div>
+                            </div>
+                            <div class="metric-small">
+                                <div class="metric-small-value">1000x</div>
+                                <div class="metric-small-label">скорость обучения</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2040 -->
+                <div class="timeline-item">
+                    <div class="timeline-year">2040</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Предиктивная медицина AI</h3>
+                        <p class="timeline-description">
+                            AI предсказывает заболевания за 5-10 лет до симптомов. 
+                            Персонализированная профилактика на основе генома, образа жизни и окружения. 
+                            Врач становится архитектором здоровья.
+                        </p>
+                        <div class="timeline-metrics">
+                            <div class="metric-small">
+                                <div class="metric-small-value">90%</div>
+                                <div class="metric-small-label">болезней предотвращено</div>
+                            </div>
+                            <div class="metric-small">
+                                <div class="metric-small-value">150+</div>
+                                <div class="metric-small-label">лет жизни</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2045 -->
+                <div class="timeline-item">
+                    <div class="timeline-year">2045</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Сингулярность в медицине</h3>
+                        <p class="timeline-description">
+                            AI превосходит человеческий интеллект в диагностике и лечении. 
+                            Наномедицина восстанавливает органы на клеточном уровне. 
+                            Старение становится излечимым заболеванием.
+                        </p>
+                        <div class="timeline-metrics">
+                            <div class="metric-small">
+                                <div class="metric-small-value">∞</div>
+                                <div class="metric-small-label">база знаний</div>
+                            </div>
+                            <div class="metric-small">
+                                <div class="metric-small-value">99.9%</div>
+                                <div class="metric-small-label">излечимость</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2050 -->
+                <div class="timeline-item">
+                    <div class="timeline-year">2050</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Симбиоз человека и AI</h3>
+                        <p class="timeline-description">
+                            Граница между врачом и AI стирается. Медицинские знания загружаются напрямую 
+                            в мозг. Каждый человек — потенциальный врач с доступом к коллективному разуму.
+                        </p>
+                        <div class="timeline-metrics">
+                            <div class="metric-small">
+                                <div class="metric-small-value">0</div>
+                                <div class="metric-small-label">неизлечимых болезней</div>
+                            </div>
+                            <div class="metric-small">
+                                <div class="metric-small-value">∞</div>
+                                <div class="metric-small-label">потенциал развития</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция 4: Начните будущее сегодня -->
+    <section class="section" style="background: linear-gradient(135deg, rgba(78, 205, 196, 0.05), rgba(0, 212, 255, 0.05));">
+        <div class="container" style="text-align: center;">
+            <h2 style="font-size: 3rem; margin-bottom: 30px;">
+                Будущее начинается с первого шага
+            </h2>
+            <p style="font-size: 1.3rem; opacity: 0.8; margin-bottom: 50px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                Вы можете ждать 2050 года или начать использовать технологии будущего уже сегодня. 
+                MedAI Pro — это ваш первый шаг в новую эру медицинского маркетинга.
+            </p>
+            
+            <div class="glass-card" style="max-width: 800px; margin: 0 auto;">
+                <h3 style="font-size: 2rem; color: var(--current-year); margin-bottom: 30px;">
+                    Специальное предложение для пионеров
+                </h3>
+                <p style="font-size: 1.2rem; margin-bottom: 20px;">
+                    Первые 10 врачей получают:
+                </p>
+                <ul style="list-style: none; text-align: left; line-height: 2.5; font-size: 1.1rem; max-width: 500px; margin: 0 auto;">
+                    <li>✅ Бесплатная настройка AI-аватара (50,000₽)</li>
+                    <li>✅ 14 дней тест-драйва без оплаты</li>
+                    <li>✅ Пожизненная скидка 30%</li>
+                    <li>✅ Приоритет на новые технологии</li>
+                    <li>✅ Эксклюзив на ваш район города</li>
+                </ul>
+                <a href="https://t.me/medaipro_bot" class="cta-button" style="margin-top: 40px;">
+                    Забронировать место в будущем
+                </a>
+            </div>
+
+            <div style="margin-top: 80px;">
+                <p style="font-size: 1.2rem; opacity: 0.6; margin-bottom: 20px;">
+                    "Лучшее время посадить дерево было 20 лет назад.<br>
+                    Второе лучшее время — сегодня."
+                </p>
+                <p style="font-size: 1rem; opacity: 0.5;">Древняя китайская мудрость, актуальная для AI</p>
+            </div>
+
+            <div style="margin-top: 50px;">
+                <p style="opacity: 0.8;">Свяжитесь с нами:</p>
+                <p>📱 Telegram: @medaipro_bot</p>
+                <p>🌐 Сайт: medaipro.ai</p>
+                <p>📧 Email: future@medaipro.ai</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Кастомный курсор
+        const cursor = document.querySelector('.cursor');
+        const follower = document.querySelector('.cursor-follower');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            setTimeout(() => {
+                follower.style.left = e.clientX - 10 + 'px';
+                follower.style.top = e.clientY - 10 + 'px';
+            }, 100);
+        });
+
+        // Частицы фона
+        const canvas = document.getElementById('particles-bg');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        const particleCount = 100;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2;
+                this.speedX = Math.random() * 2 - 1;
+                this.speedY = Math.random() * 2 - 1;
+                this.opacity = Math.random() * 0.5 + 0.2;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
+                if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
+            }
+
+            draw() {
+                ctx.fillStyle = `rgba(0, 212, 255, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+
+            // Соединяющие линии
+            particles.forEach((a, index) => {
+                particles.slice(index + 1).forEach(b => {
+                    const dx = a.x - b.x;
+                    const dy = a.y - b.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 100) {
+                        ctx.strokeStyle = `rgba(0, 212, 255, ${0.2 * (1 - distance / 100)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.beginPath();
+                        ctx.moveTo(a.x, a.y);
+                        ctx.lineTo(b.x, b.y);
+                        ctx.stroke();
+                    }
+                });
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
+
+        // Resize handler
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Плавная прокрутка
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Анимация появления элементов при скролле
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Наблюдаем за элементами timeline
+        document.querySelectorAll('.timeline-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Наблюдаем за fade-in элементами
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
