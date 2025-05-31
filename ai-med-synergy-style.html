@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedAIPro - AI-маркетинг нового поколения для медицинских клиник | ROI 420% за 90 дней</title>
+    <meta name="description" content="Превращаем врачей в digital-лидеров мнений. AI генерирует 100+ видео в месяц, снижает CPL на 78% и гарантирует поток премиальных пациентов.">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #00D9FF;
+            --secondary: #7C3AED;
+            --dark: #0F172A;
+            --light: #F8FAFC;
+            --gradient: linear-gradient(135deg, #00D9FF 0%, #7C3AED 100%);
+            --gradient-dark: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: var(--light);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Modern Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        header.scrolled {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo::before {
+            content: '⚡';
+            font-size: 32px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            position: relative;
+            transition: all 0.3s;
+        }
+        
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s;
+        }
+        
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+        
+        .cta-header {
+            background: var(--gradient);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 10px 20px rgba(124, 58, 237, 0.3);
+        }
+        
+        .cta-header:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(124, 58, 237, 0.4);
+        }
+        
+        /* Hero Section - Ultra Modern */
+        .hero {
+            padding: 140px 0 100px;
+            background: var(--gradient-dark);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(0, 217, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(124, 58, 237, 0.1) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-50px, -50px) rotate(180deg); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        
+        .hero-text h1 {
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1.1;
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .hero-text h1 span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-subtitle {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .hero-stat {
+            text-align: center;
+        }
+        
+        .hero-stat-number {
+            font-size: 42px;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-stat-label {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s;
+            display: inline-block;
+            box-shadow: 0 20px 40px rgba(0, 217, 255, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 25px 50px rgba(0, 217, 255, 0.4);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 16px 40px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-3px);
+        }
+        
+        .hero-visual {
+            position: relative;
+        }
+        
+        .hero-mockup {
+            width: 100%;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .floating-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .floating-card.card-1 {
+            top: 20px;
+            right: -30px;
+            animation: floatCard1 15s ease-in-out infinite;
+        }
+        
+        .floating-card.card-2 {
+            bottom: 40px;
+            left: -20px;
+            animation: floatCard2 20s ease-in-out infinite;
+        }
+        
+        @keyframes floatCard1 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-20px, -20px) rotate(5deg); }
+        }
+        
+        @keyframes floatCard2 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(20px, -30px) rotate(-5deg); }
+        }
+        
+        /* Problem Section - Modern Cards */
+        .problems-section {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .section-title {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .section-subtitle {
+            font-size: 20px;
+            color: #64748B;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .problem-card {
+            background: var(--light);
+            padding: 40px;
+            border-radius: 20px;
+            position: relative;
+            transition: all 0.3s;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .problem-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 20px 20px 0 0;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .problem-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .problem-card:hover::before {
+            opacity: 1;
+        }
+        
+        .problem-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        
+        .problem-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .problem-text {
+            color: #64748B;
+            line-height: 1.8;
+        }
+        
+        .problem-metric {
+            font-size: 32px;
+            font-weight: 800;
+            color: #EF4444;
+            margin-top: 20px;
+        }
+        
+        /* Solution Section - Tech Style */
+        .solution-section {
+            padding: 100px 0;
+            background: var(--light);
+        }
+        
+        .solution-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        
+        .solution-visual {
+            position: relative;
+        }
+        
+        .ai-visualization {
+            width: 100%;
+            height: 600px;
+            background: var(--gradient-dark);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .ai-brain {
+            width: 200px;
+            height: 200px;
+            position: relative;
+        }
+        
+        .ai-brain::before {
+            content: '🧠';
+            font-size: 150px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            filter: hue-rotate(180deg);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+        }
+        
+        .ai-connections {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+        
+        .connection {
+            position: absolute;
+            width: 2px;
+            height: 100px;
+            background: var(--gradient);
+            opacity: 0.3;
+            animation: connectionPulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes connectionPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        
+        .solution-features {
+            display: grid;
+            gap: 30px;
+        }
+        
+        .solution-feature {
+            display: flex;
+            gap: 20px;
+            align-items: start;
+            padding: 25px;
+            background: white;
+            border-radius: 15px;
+            transition: all 0.3s;
+        }
+        
+        .solution-feature:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transform: translateX(10px);
+        }
+        
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        
+        .feature-content h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .feature-content p {
+            color: #64748B;
+            line-height: 1.8;
+        }
+        
+        /* ROI Calculator - Interactive */
+        .calculator-section {
+            padding: 100px 0;
+            background: var(--gradient-dark);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .calculator-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .calculator-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .calculator-header h2 {
+            font-size: 42px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .calc-input {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .calc-input label {
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        .calc-input input {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 15px 20px;
+            border-radius: 10px;
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .calc-input input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--primary);
+        }
+        
+        .calc-results {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .result-item {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+        }
+        
+        .result-value {
+            font-size: 36px;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        
+        .result-label {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+        
+        /* Cases Section - Modern Carousel */
+        .cases-section {
+            padding: 100px 0;
+            background: white;
+            overflow: hidden;
+        }
+        
+        .cases-slider {
+            position: relative;
+            margin-top: 60px;
+        }
+        
+        .cases-track {
+            display: flex;
+            gap: 30px;
+            animation: slideInfinite 40s linear infinite;
+        }
+        
+        @keyframes slideInfinite {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        .case-card {
+            min-width: 400px;
+            background: var(--gradient);
+            border-radius: 20px;
+            padding: 40px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .case-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .case-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .case-logo {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .case-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .case-subtitle {
+            opacity: 0.8;
+            margin-bottom: 30px;
+        }
+        
+        .case-metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .case-metric {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-size: 28px;
+            font-weight: 800;
+            display: block;
+        }
+        
+        .metric-label {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        
+        /* Pricing - Modern Cards */
+        .pricing-section {
+            padding: 100px 0;
+            background: var(--light);
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            position: relative;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pricing-card.popular {
+            border-color: var(--secondary);
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.popular:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+        
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient);
+            color: white;
+            padding: 5px 20px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .pricing-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .pricing-price {
+            font-size: 48px;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin: 30px 0;
+        }
+        
+        .pricing-features li {
+            padding: 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #64748B;
+        }
+        
+        .pricing-features li::before {
+            content: '✓';
+            width: 20px;
+            height: 20px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+        
+        .pricing-cta {
+            background: var(--gradient);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .pricing-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
+        }
+        
+        /* Trust Section */
+        .trust-section {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .trust-logos {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 60px;
+            opacity: 0.6;
+        }
+        
+        .trust-logo {
+            height: 40px;
+            filter: grayscale(100%);
+            transition: all 0.3s;
+        }
+        
+        .trust-logo:hover {
+            filter: grayscale(0%);
+            transform: scale(1.1);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: var(--gradient-dark);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-title {
+            font-size: 48px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .cta-subtitle {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 80px 0 40px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-brand h3 {
+            font-size: 28px;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+        
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-link:hover {
+            background: var(--gradient);
+            transform: translateY(-3px);
+        }
+        
+        .footer-column h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+            display: inline-block;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-text h1 {
+                font-size: 36px;
+            }
+            
+            .problems-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .solution-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .calculator-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Loading Animation */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">MedAIPro</div>
+            <div class="nav-menu">
+                <a href="#solution">Решение</a>
+                <a href="#results">Результаты</a>
+                <a href="#pricing">Инвестиции</a>
+                <a href="#cases">Кейсы</a>
+                <a href="#contact" class="cta-header">Обсудить проект</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text fade-in">
+                    <h1>Превращаем врачей в <span>digital-лидеров мнений</span> с помощью AI</h1>
+                    <p class="hero-subtitle">
+                        AI генерирует 100+ персонализированных видео в месяц, снижает стоимость привлечения пациента на 78% 
+                        и гарантирует поток премиальных клиентов, готовых платить на 40% больше
+                    </p>
+                    
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <div class="hero-stat-number">420%</div>
+                            <div class="hero-stat-label">Средний ROI</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-number">7 дней</div>
+                            <div class="hero-stat-label">До первых лидов</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-number">24/7</div>
+                            <div class="hero-stat-label">AI работает</div>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-cta">
+                        <a href="#demo" class="btn-primary">Получить AI-стратегию</a>
+                        <a href="#calculator" class="btn-secondary">Рассчитать прибыль</a>
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <div class="hero-mockup">
+                        <div class="ai-brain">
+                            <div class="ai-connections">
+                                <div class="connection" style="top: 10%; left: 20%; transform: rotate(45deg);"></div>
+                                <div class="connection" style="top: 30%; right: 20%; transform: rotate(-45deg);"></div>
+                                <div class="connection" style="bottom: 20%; left: 30%; transform: rotate(135deg);"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="floating-card card-1">
+                            <div style="font-size: 24px; font-weight: bold; color: white;">+380%</div>
+                            <div style="font-size: 14px; color: rgba(255,255,255,0.8);">рост подписчиков</div>
+                        </div>
+                        
+                        <div class="floating-card card-2">
+                            <div style="font-size: 24px; font-weight: bold; color: white;">78% ↓</div>
+                            <div style="font-size: 14px; color: rgba(255,255,255,0.8);">снижение CPL</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problems Section -->
+    <section class="problems-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">90% клиник теряют пациентов из-за слабого digital-присутствия</h2>
+                <p class="section-subtitle">В то время как конкуренты активно развивают личные бренды врачей и забирают ваших клиентов</p>
+            </div>
+            
+            <div class="problems-grid">
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">💸</div>
+                    <h3 class="problem-title">Реклама дорожает</h3>
+                    <p class="problem-text">CPL вырос на 250% за 2 года. Яндекс.Директ и Google Ads больше не окупаются</p>
+                    <div class="problem-metric">150K₽/пациент</div>
+                </div>
+                
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">🏃</div>
+                    <h3 class="problem-title">Пациенты уходят к блогерам</h3>
+                    <p class="problem-text">67% выбирают врача по соцсетям. Без личного бренда вы невидимы</p>
+                    <div class="problem-metric">-40% потока</div>
+                </div>
+                
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">📱</div>
+                    <h3 class="problem-title">SMM не работает</h3>
+                    <p class="problem-text">10 постов в месяц за 200K₽? Конкуренты с AI делают 100+ за те же деньги</p>
+                    <div class="problem-metric">x10 переплата</div>
+                </div>
+                
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">👥</div>
+                    <h3 class="problem-title">Врачи не хотят в соцсети</h3>
+                    <p class="problem-text">"Нет времени", "Не умею", "Стесняюсь" — знакомые отговорки?</p>
+                    <div class="problem-metric">0% вовлечения</div>
+                </div>
+                
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">💰</div>
+                    <h3 class="problem-title">Демпинг конкурентов</h3>
+                    <p class="problem-text">Турция, новички, скидки 50%. Как конкурировать по цене?</p>
+                    <div class="problem-metric">-30% чека</div>
+                </div>
+                
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">📊</div>
+                    <h3 class="problem-title">Нет измеримости</h3>
+                    <p class="problem-text">Откуда пришел пациент? Какой канал работает? ROI = ?</p>
+                    <div class="problem-metric">слепая зона</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">AI-система, которая делает врачей звездами</h2>
+                <p class="section-subtitle">Полная автоматизация личного бренда: от идеи до тысяч подписчиков</p>
+            </div>
+            
+            <div class="solution-content">
+                <div class="solution-visual fade-in">
+                    <div class="ai-visualization">
+                        <div class="ai-brain"></div>
+                    </div>
+                </div>
+                
+                <div class="solution-features fade-in">
+                    <div class="solution-feature">
+                        <div class="feature-icon">🤖</div>
+                        <div class="feature-content">
+                            <h3>Цифровой двойник врача</h3>
+                            <p>AI-аватар консультирует пациентов 24/7, отвечает на вопросы в комментариях, проводит вебинары</p>
+                        </div>
+                    </div>
+                    
+                    <div class="solution-feature">
+                        <div class="feature-icon">🎬</div>
+                        <div class="feature-content">
+                            <h3>100+ видео автоматически</h3>
+                            <p>Shorts, Reels, TikTok — AI адаптирует контент под каждую платформу и аудиторию</p>
+                        </div>
+                    </div>
+                    
+                    <div class="solution-feature">
+                        <div class="feature-icon">📈</div>
+                        <div class="feature-content">
+                            <h3>Персонализация по ЦА</h3>
+                            <p>Молодые мамы, бизнесмены, пенсионеры — для каждого свой tone of voice</p>
+                        </div>
+                    </div>
+                    
+                    <div class="solution-feature">
+                        <div class="feature-icon">🎯</div>
+                        <div class="feature-content">
+                            <h3>Умная воронка продаж</h3>
+                            <p>От просмотра до операции: AI ведет пациента по всем touchpoints</p>
+                        </div>
+                    </div>
+                    
+                    <div class="solution-feature">
+                        <div class="feature-icon">📊</div>
+                        <div class="feature-content">
+                            <h3>Real-time аналитика</h3>
+                            <p>CPL, LTV, ROI по каждому каналу. Знаете, откуда пришел каждый рубль</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI Calculator -->
+    <section class="calculator-section">
+        <div class="container">
+            <div class="calculator-container">
+                <div class="calculator-header">
+                    <h2>Рассчитайте прибыль от личного бренда</h2>
+                    <p style="color: rgba(255,255,255,0.8); font-size: 18px;">Посмотрите, сколько вы потеряете, если конкуренты внедрят AI первыми</p>
+                </div>
+                
+                <div class="calculator-grid">
+                    <div class="calc-input">
+                        <label>Процедур в месяц сейчас</label>
+                        <input type="number" id="procedures" value="20" min="1">
+                    </div>
+                    <div class="calc-input">
+                        <label>Средний чек (₽)</label>
+                        <input type="number" id="avgCheck" value="300000" min="10000">
+                    </div>
+                    <div class="calc-input">
+                        <label>Текущий CPL (₽)</label>
+                        <input type="number" id="cpl" value="120000" min="1000">
+                    </div>
+                    <div class="calc-input">
+                        <label>Бюджет на маркетинг (₽)</label>
+                        <input type="number" id="budget" value="1500000" min="10000">
+                    </div>
+                </div>
+                
+                <div class="calc-results">
+                    <h3 style="color: white; margin-bottom: 30px; font-size: 24px;">Ваш результат через 3 месяца с MedAIPro:</h3>
+                    <div class="results-grid">
+                        <div class="result-item">
+                            <div class="result-value" id="newPatients">96</div>
+                            <div class="result-label">пациентов/мес (+380%)</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-value" id="newCPL">26K₽</div>
+                            <div class="result-label">новый CPL (-78%)</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-value" id="yearProfit">152M₽</div>
+                            <div class="result-label">доп. выручка/год</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cases Section -->
+    <section class="cases-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Врачи, которых мы сделали звездами</h2>
+                <p class="section-subtitle">Реальные результаты за 90 дней работы с AI</p>
+            </div>
+        </div>
+        
+        <div class="cases-slider">
+            <div class="cases-track">
+                <div class="case-card">
+                    <div class="case-content">
+                        <div class="case-logo">АК</div>
+                        <h3 class="case-title">Д-р Александра Королева</h3>
+                        <p class="case-subtitle">Пластический хирург, Москва</p>
+                        
+                        <div class="case-metrics">
+                            <div class="case-metric">
+                                <span class="metric-value">156K</span>
+                                <span class="metric-label">подписчиков</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="metric-value">450%</span>
+                                <span class="metric-label">ROI</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="metric-value">+60%</span>
+                                <span class="metric-label">к среднему чеку</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="metric-value">3M</span>
+                                <span class="metric-label">просмотров/мес</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-card">
+                    <div class="case-content">
+                        <div class="case-logo">ИС</div>
+                        <h3 class="case-title">Д-р Иван Смирнов</h3>
+                        <p class="case-subtitle">Трансплантолог, СПб</p>
+                        
+                        <div class="case-metrics">
+                            <div class="case-metric">
+                                <span class="metric-value">89K</span>
+                                <span class="metric-label">подписчиков</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="metric-value">23</span>
+                                <span class="metric-label">вернули из Турции</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="metric-value">380%</span>
+                                <span class="metric-label">ROI</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="metric-value">5</span>
+                                <span class="metric-label">языков контента</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-card">
+                    <div class="case-content">
+                        <div class="case-logo">МП</div>
+                        <h3 class="case-title">Д-р Мария Петрова</h3>
+                        <p class="case-subtitle">Косметолог, Екатеринбург</p>
+                        
+                        <div class="case-metrics">
+                            <div class="case-metric">
+                                <span class="metric-value">234K</span>
+                                <span class="metric-label">подписчиков</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="metric-value">92%</span>
+                                <span class="metric-label">retention rate</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="metric-value">520K₽</span>
+                                <span class="metric-label">LTV клиента</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="metric-value">18</span>
+                                <span class="metric-label">дней окупаемость</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Дублируем для бесконечной прокрутки -->
+                <div class="case-card">
+                    <div class="case-content">
+                        <div class="case-logo">АК</div>
+                        <h3 class="case-title">Д-р Александра Королева</h3>
+                        <p class="case-subtitle">Пластический хирург, Москва</p>
+                        
+                        <div class="case-metrics">
+                            <div class="case-metric">
+                                <span class="metric-value">156K</span>
+                                <span class="metric-label">подписчиков</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="metric-value">450%</span>
+                                <span class="metric-label">ROI</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="metric-value">+60%</span>
+                                <span class="metric-label">к среднему чеку</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="metric-value">3M</span>
+                                <span class="metric-label">просмотров/мес</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Инвестиции в будущее вашей клиники</h2>
+                <p class="section-subtitle">Выберите скорость роста: от тестирования до доминирования в нише</p>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card fade-in">
+                    <h3 class="pricing-name">AI Start</h3>
+                    <div class="pricing-price">97K₽</div>
+                    <p style="color: #64748B; margin-bottom: 30px;">в месяц</p>
+                    
+                    <ul class="pricing-features">
+                        <li>AI-аватар 1 врача</li>
+                        <li>50 видео/месяц</li>
+                        <li>3 социальные сети</li>
+                        <li>Базовая аналитика</li>
+                        <li>Чат-поддержка</li>
+                    </ul>
+                    
+                    <a href="#" class="pricing-cta">Начать тестирование</a>
+                </div>
+                
+                <div class="pricing-card popular fade-in">
+                    <div class="pricing-badge">Популярный выбор</div>
+                    <h3 class="pricing-name">AI Growth</h3>
+                    <div class="pricing-price">197K₽</div>
+                    <p style="color: #64748B; margin-bottom: 30px;">в месяц</p>
+                    
+                    <ul class="pricing-features">
+                        <li>AI-аватары 3 врачей</li>
+                        <li>150+ видео/месяц</li>
+                        <li>Все соцсети + YouTube</li>
+                        <li>A/B тестирование</li>
+                        <li>Персональный менеджер</li>
+                        <li>Интеграция с CRM</li>
+                        <li>Гарантия результата</li>
+                    </ul>
+                    
+                    <a href="#" class="pricing-cta">Масштабировать рост</a>
+                </div>
+                
+                <div class="pricing-card fade-in">
+                    <h3 class="pricing-name">AI Domination</h3>
+                    <div class="pricing-price">397K₽</div>
+                    <p style="color: #64748B; margin-bottom: 30px;">в месяц</p>
+                    
+                    <ul class="pricing-features">
+                        <li>Безлимит AI-аватаров</li>
+                        <li>500+ видео/месяц</li>
+                        <li>PR в СМИ</li>
+                        <li>Выступления и подкасты</li>
+                        <li>Персональная AI-команда</li>
+                        <li>White-label решения</li>
+                        <li>Эксклюзив в регионе</li>
+                    </ul>
+                    
+                    <a href="#" class="pricing-cta">Доминировать в нише</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Нас выбирают лидеры медицинского рынка</h2>
+                <p class="section-subtitle">Работаем с топовыми клиниками России и СНГ</p>
+            </div>
+            
+            <div class="trust-logos">
+                <div style="width: 150px; height: 40px; background: #e0e0e0; border-radius: 5px;"></div>
+                <div style="width: 150px; height: 40px; background: #e0e0e0; border-radius: 5px;"></div>
+                <div style="width: 150px; height: 40px; background: #e0e0e0; border-radius: 5px;"></div>
+                <div style="width: 150px; height: 40px; background: #e0e0e0; border-radius: 5px;"></div>
+                <div style="width: 150px; height: 40px; background: #e0e0e0; border-radius: 5px;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content fade-in">
+                <h2 class="cta-title">Готовы опередить конкурентов на 10 лет?</h2>
+                <p class="cta-subtitle">
+                    Получите персональную AI-стратегию для вашей клиники. 
+                    30 минут консультации изменят ваш взгляд на медицинский маркетинг
+                </p>
+                
+                <div class="cta-buttons">
+                    <a href="#consultation" class="btn-primary">Получить AI-стратегию</a>
+                    <a href="https://calendly.com/medaipro" class="btn-secondary">Выбрать время звонка</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>MedAIPro</h3>
+                    <p>
+                        Первое в России агентство AI-маркетинга для премиум-медицины. 
+                        Превращаем врачей в digital-лидеров мнений и гарантируем поток пациентов.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">f</a>
+                        <a href="#" class="social-link">in</a>
+                        <a href="#" class="social-link">tg</a>
+                        <a href="#" class="social-link">yt</a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Услуги</h4>
+                    <ul>
+                        <li><a href="#">AI-аватары врачей</a></li>
+                        <li><a href="#">Автогенерация контента</a></li>
+                        <li><a href="#">Личный бренд врача</a></li>
+                        <li><a href="#">Digital-стратегия</a></li>
+                        <li><a href="#">Аналитика и ROI</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Компания</h4>
+                    <ul>
+                        <li><a href="#">О нас</a></li>
+                        <li><a href="#">Кейсы</a></li>
+                        <li><a href="#">Технологии</a></li>
+                        <li><a href="#">Блог</a></li>
+                        <li><a href="#">Карьера</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Контакты</h4>
+                    <ul>
+                        <li><a href="tel:+74951234567">+7 495 123-45-67</a></li>
+                        <li><a href="mailto:hello@medaipro.ru">hello@medaipro.ru</a></li>
+                        <li>Москва, Пресненская наб., 12</li>
+                        <li>Пн-Пт: 9:00 - 19:00 МСК</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 MedAIPro. Все права защищены. | <a href="#" style="color: inherit;">Политика конфиденциальности</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // ROI Calculator
+        function updateCalculator() {
+            const procedures = parseInt(document.getElementById('procedures').value) || 20;
+            const avgCheck = parseInt(document.getElementById('avgCheck').value) || 300000;
+            const currentCPL = parseInt(document.getElementById('cpl').value) || 120000;
+            const budget = parseInt(document.getElementById('budget').value) || 1500000;
+            
+            // AI calculations
+            const newCPL = Math.round(currentCPL * 0.22);
+            const newPatients = Math.round(budget / newCPL);
+            const additionalRevenue = (newPatients - procedures) * avgCheck;
+            const yearRevenue = additionalRevenue * 12;
+            
+            // Update display
+            document.getElementById('newPatients').textContent = newPatients;
+            document.getElementById('newCPL').textContent = Math.round(newCPL / 1000) + 'K₽';
+            document.getElementById('yearProfit').textContent = Math.round(yearRevenue / 1000000) + 'M₽';
+        }
+        
+        // Calculator inputs
+        document.querySelectorAll('.calc-input input').forEach(input => {
+            input.addEventListener('input', updateCalculator);
+        });
+        
+        // Initialize calculator
+        updateCalculator();
+        
+        // Fade in animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Parallax effect for hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero::before');
+            if (parallax) {
+                const speed = 0.5;
+                parallax.style.transform = `translateY(${scrolled * speed}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
